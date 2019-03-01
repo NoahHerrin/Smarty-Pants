@@ -1,0 +1,22 @@
+{
+  "name": "smarty-pants",
+  "version": "1.0.0",
+  "description": "a simple app to help me get dressed in the morning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoahHerrin/Smarty-Pants.git"
+  },
+  "author": "Noah Herrin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NoahHerrin/Smarty-Pants/issues"
+  },
+  "homepage": "https://github.com/NoahHerrin/Smarty-Pants#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

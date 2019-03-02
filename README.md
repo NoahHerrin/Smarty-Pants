@@ -12,10 +12,10 @@ Smarty Pants is an assistant that will help you look and feel your best when you
 
 
 ## TODO
-- [] create simple database
-- [] create query for adding items
-- [] create query for displaying all items
-- [] generate a random Outfit
-- [] using only colors, start working on the smart selection
-- [] implement reactions to user interface and have smart selection use input from reactions
-- [] add more data points (times skipped, times selected)
+- [x] create simple database
+- [ ] create query for adding items
+- [ ] create query for displaying all items
+- [ ] generate a random Outfit
+- [ ] using only colors, start working on the smart selection
+- [ ] implement reactions to user interface and have smart selection use input from reactions
+- [ ] add more data points (times skipped, times selected)

@@ -1,7 +1,10 @@
 # Smarty Pants
 
 ## Purpose
-Smarty Pants is an assistant that will help you look and feel your best when you step out the door without taking up your precious morning time.
+Smarty Pants is an assistant that will help you look and feel your best when you step out the door without taking up your precious morning time. 
+## Personal Goals
+To gain a deeper understanding of python and how to use libraries to build a full project with a frontend and backend, as preperation for
+learning django or another webframework
 
 ## Features
 * Digital Wardrobe (In Development)

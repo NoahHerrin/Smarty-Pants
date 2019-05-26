@@ -29,18 +29,18 @@
 # algorithm.calculateShortestPath(vertexList, A)
 # algorithm.getShortestPathTo(E)
 
-from Graph import Graph
+# from Graph import Graph
 
-graph = Graph()
-VertexNames = ["A","B","C","D","E"]
-for vertex in VertexNames:
-    graph.addVertex(vertex)
-Edges = []
-graph.addEdge(6, "A", "C")
-graph.addEdge(1, "A", "B")
-graph.addEdge(2, "B", "C")
-graph.addEdge(1, "C", "D")
-graph.addEdge(1, "D", "E")
-graph.addEdge(5, "B", "E")
-graph.calculateShortestPath(graph.VertexList, graph.getVertex("A"))
-graph.getShortestPathTo(graph.getVertex("E"))
+# graph = Graph()
+# VertexNames = ["A","B","C","D","E"]
+# for vertex in VertexNames:
+#    graph.addVertex(vertex)
+# Edges = []
+# graph.addEdge(6, "A", "C")
+# graph.addEdge(1, "A", "B")
+# graph.addEdge(2, "B", "C")
+# graph.addEdge(1, "C", "D")
+# graph.addEdge(1, "D", "E")
+# graph.addEdge(5, "B", "E")
+# graph.calculateShortestPath(graph.VertexList, graph.getVertex("A"))
+# graph.getShortestPathTo(graph.getVertex("E"))

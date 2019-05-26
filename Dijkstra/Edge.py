@@ -4,3 +4,5 @@ class Edge(object):
         self.weight = weight
         self.startVertex = startVertex
         self.targetVertex = targetVertex
+    def getInfo(self):
+        return "({}, {}, {})".format(self.startVertex.name, self.targetVertex.name, self.weight)

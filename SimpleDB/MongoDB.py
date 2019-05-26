@@ -2,19 +2,19 @@ import pymongo
 
 
 class Database(object):
-    def __init__(self,collection,attributes):
-        client = pymongo.MongoClient("mongodb+srv://herrinn:root123@practice-yqlip.mongodb.net/test?retryWrites=true")
-        self.db = client["smartypants"]
-        self.collection = self.db[collection]
-        self.attributes = attributes
-
+    def __init__(self, Username, Password, DBName, CollectionName, Attributes):
+        self.client = pymongo.MongoClient("mongodb+srv://{}:{}@practice-yqlip.mongodb.net/test?retryWrites=true".format(Username, Password))
+        self.db = self.client[DBName]
+        self.collection = self.db[CollectionName]
+        self.attributes = Attributes
     # using the provided attributes will check if collection contains document
     def contains(self, data):
         # check for name, color, type
         for trait in self.attributes['titles']:
-            if trait in data and self.fetch(trait, data[trait]).count() is 1:
-                return True
-        return False
+            # check if trait being used is in data
+            if not (trait in data and self.fetch(trait, data[trait])):
+                return False
+        return True
 
     # provide a key and a value, will fetch associated document
     def fetch(self, key, value):
@@ -36,4 +36,3 @@ class Database(object):
         return self.collection.count()
     def fetch_settings(self):
         return self.attributes
-    

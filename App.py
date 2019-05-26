@@ -78,13 +78,16 @@ def downloadEdges(Source, Output):
 
 # uploadVertices(graph,db1)
 # uploadEdge(graph,db2)
-graph2 = Graph()
-graph2.printGraphInfo()
+# graph2 = Graph()
+# graph2.printGraphInfo()
 
-downloadVerticies(db1, graph2)
-downloadEdges(db2, graph2)
-graph2.printGraphInfo()
-graph2.getVertex("A").printData()
-graph.getVertex("A").printData()
+# downloadVerticies(db1, graph2)
+# ownloadEdges(db2, graph2)
+# graph2.printGraphInfo()
+# graph2.getVertex("A").printData()
+# graph.getVertex("A").printData()
 # graph2.calculateShortestPath(graph2.getVertex("A"))
 # graph2.getShortestPathTo("E")
+
+if __name__ == '__main__':
+    print("this is essentialls like a public static void main(String[] args) {...} in java")

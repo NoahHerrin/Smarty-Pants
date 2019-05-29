@@ -3,6 +3,7 @@ from Dijkstra.Edge import Edge
 from Dijkstra.Algorithm import Algorithm
 import heapq
 import sys
+import json
 
 class Graph(object):
     def __init__(self):
@@ -15,8 +16,10 @@ class Graph(object):
     def addEdge(self, weight, originName, destinationName):
         # add check for duplicate edges from a single node (e.g A -5-> B and A -4-> B)
         # print(self.VertexIndicies[originName])
-        origin = self.VertexList[self.VertexIndicies[originName]]
-        destination = self.VertexList[self.VertexIndicies[destinationName]]
+        if originName not in self.VertexIndicies:
+            raise Exception("you know the error {}".format(originName))
+        origin = self.getVertex(originName)
+        destination = self.getVertex(destinationName)
         edge = Edge(weight, origin, destination)
         origin.adjacenciesList.append(edge)
         self.EdgeList.append(edge)
@@ -59,8 +62,15 @@ class Graph(object):
                 min = v.minDistance
                 vertex = v
         return vertex
+    def changeEdgeWeight(self, originName, destinationName, newWeight):
+        origin = self.getVertex(originName)
+        for edge in origin.adjacenciesList:
+            if edge.targetVertex.name is destinationName:
+                edge.weight = newWeight
+                return True
+        return False
 
-    # print out list of nodes followed by details about all edges in the graph
+    #  print out list of nodes followed by details about all edges in the graph
     def printGraphInfo(self):
         print("Graph Info")
         print("Vertices: (", end="")

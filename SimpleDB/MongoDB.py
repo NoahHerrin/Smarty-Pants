@@ -2,6 +2,33 @@ import pymongo
 
 
 class Database(object):
+    """Short summary.
+
+    Parameters
+    ----------
+    Username : String
+        Credential for connecting to mongodb database.
+    Password : String
+        Credential for connecting to mongodb database.
+    DBName : String
+        The name of the mongodb database to be accessed.
+    CollectionName : String
+        The name of the collection within the database to be accessed.
+    Attributes : Dictionary of String keys and Values of any datatype
+        Requires a list of keys to the values stored in each database entry (used for contains(...)).
+
+    Attributes
+    ----------
+    client : MongoClient Object
+        Used to access databases.
+    db : type
+        Description of attribute `db`.
+    collection : type
+        Description of attribute `collection`.
+    attributes : type
+        Description of attribute `attributes`.
+
+    """
     def __init__(self, Username, Password, DBName, CollectionName, Attributes):
         self.client = pymongo.MongoClient("mongodb+srv://{}:{}@practice-yqlip.mongodb.net/test?retryWrites=true".format(Username, Password))
         self.db = self.client[DBName]
@@ -34,5 +61,10 @@ class Database(object):
     # return the number of entries in collection
     def fetch_num_entries(self):
         return self.collection.count()
+    # updates data in a document
+    def update_document(self, identifier, update):
+        newvalues = {"$set": update }
+        id = self.collection.update_one(identifier, newvalues)
+        print(id)
     def fetch_settings(self):
         return self.attributes

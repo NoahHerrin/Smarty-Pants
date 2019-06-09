@@ -8,16 +8,25 @@ import json
 class Graph(object):
     def __init__(self):
         self.VertexList = []
-        self.VertexIndicies = {}
+        # self.VertexIndicies = {}
         self.EdgeList = []
-    def addVertex(self, vertexName):
-        self.VertexIndicies[vertexName] = len(self.VertexList)
-        self.VertexList.append(Vertex(vertexName))
+        self.numVertices = 0
+    def addVertex(self, id=None):
+        # self.VertexIndicies[self.numVertices] = len(self.VertexList)
+        if id is None:
+            self.VertexList.append(Vertex(self.numVertices))
+            self.numVertices += 1
+            return (self.numVertices - 1)
+        else:
+            self.VertexList.append(Vertex(id))
+            self.numVertices += 1
+
+
     def addEdge(self, weight, originName, destinationName):
         # add check for duplicate edges from a single node (e.g A -5-> B and A -4-> B)
         # print(self.VertexIndicies[originName])
-        if originName not in self.VertexIndicies:
-            raise Exception("you know the error {}".format(originName))
+        # if originName not in self.VertexIndicies:
+        #     raise Exception("you know the error {}".format(originName))
         origin = self.getVertex(originName)
         destination = self.getVertex(destinationName)
         edge = Edge(weight, origin, destination)
@@ -51,8 +60,8 @@ class Graph(object):
         for i in range(len(path) - 1, 0, -1):
             print("{} -> ".format(path[i]),end="")
         print(targetVertex.name)
-    def getVertex(self, VertexName):
-        return self.VertexList[self.VertexIndicies[VertexName]]
+    def getVertex(self, vertex_id):
+         return self.VertexList[vertex_id]
     def getVertexWithLowestDistance(self, VertexSet):
         # NOT FUNCTIONAL WILL ALWAYS RETURN ORIGIN VERTEX #
         min = sys.maxsize

@@ -6,6 +6,8 @@ class Item(object):
         
     def getName(self):
         return self.__properties['name']
+    def getVertexId(self):
+        return self.__vertexId
     def modifyProperty(self, property, newValue):
         self.__properties[property] = newValue
 

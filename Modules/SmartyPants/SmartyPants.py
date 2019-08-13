@@ -1,15 +1,34 @@
 # acts as an interface for the graph algorithmn and the clothing item data represented by the algorithmn
-import Catagory as catagory
-import Item as item
+import Modules.SmartyPants.Catagory as catagory
+import Modules.SmartyPants.Item as item
 
 class SmartyPants(object):
 
     def __init__(self):
         self.__closet = {}
 
-    def addCatatagory(self, CatagoryName):
+        # create catagories
+        pants = self.addCatagory('pants')
+        shoes = self.addCatagory('shoes')
+        shirts = self.addCatagory('shirt')
+        layer = self.addCatagory('layer')
+
+        # set up catagory relations
+        shoes.setNextCatagory(pants)
+        pants.setPreviousCatagory(shoes)
+        pants.setNextCatagory(shirts)
+        shirts.setPreviousCatagory(pants)
+        shirts.setNextCatagory(layer)
+        layer.setPreviousCatagory(shirts)
+        
+        
+
+
+
+    def addCatagory(self, CatagoryName):
         if CatagoryName not in self.__closet:
-            self.__closet[CatagoryName] = catagory.Catagory()
+            self.__closet[CatagoryName] = catagory.Catagory(CatagoryName)
+            return self.__closet[CatagoryName]
         else:
             print("Catagory {} already exists.".format({CatagoryName}))
     
@@ -17,16 +36,19 @@ class SmartyPants(object):
         
         if newItem is None:
             newItem = item.Item(VertexId, Name)
-        # check if item is going in to a new Catagory, if so create new catagory
-        if Catagory not in self.__closet:
-            self.addCatatagory(Catagory)
         
-        self.__closet[Catagory].append(newItem)
+        # convert catagory to lowercase and check if catagory already exists
+        Catagory = Catagory.lower()
+        if Catagory not in self.__closet:
+            self.addCatagory(Catagory)
+        
+        self.__closet[Catagory].addItem(newItem)
         
     # prints information about each item in the closet
     def printCloset(self):
+        print("\nPrinting Closet Contents")
         for catagory in self.__closet:
-            print(catagory)
-            # iterate through the list of items
-            for item in self.__closet[catagory]:
-                item.debugItem()
+            self.__closet[catagory].printCatagory()
+            print("")
+            
+            

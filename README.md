@@ -4,7 +4,7 @@ By Noah Herrin
   To use a Dijkstra / Graph machine learning algorithm to intelligently put outfits together based on a person's personal preferences and various other factors (weather, activity, dress-codes).
 
 ## To Do List
- - [ ] make graph datastructure
+ - [x] make graph datastructure
  - [ ] make clothing item datastructure
  - [ ] link clothing datastructure and graph datastructure together
  - [ ] create the self expanding struture for the graph

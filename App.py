@@ -1,7 +1,8 @@
-from Toolkit.Graph.Graph import Graph
+from Modules.Toolkit.Graph.Graph import Graph
 
-if __name__ == "__main__":   
-    print("welcome")
+
+# creates a simple graph and finds the shortest path from vertex a to vertex d
+def testBasicGraph():
     graph = Graph()
 
     a = graph.addVertex()
@@ -18,3 +19,9 @@ if __name__ == "__main__":
 
     graph.calculateShortestPath(a)
     print(graph.getShortestPathTo(d))
+
+
+if __name__ == "__main__":   
+    print("welcome")
+    testBasicGraph()
+

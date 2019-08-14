@@ -10,7 +10,7 @@ class Item(object):
         return self.__vertexId
     def modifyProperty(self, property, newValue):
         self.__properties[property] = newValue
-
+        
     def getProperties(self):
         return self.__properties
     def getProperty(self, property):

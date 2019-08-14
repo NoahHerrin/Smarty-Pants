@@ -1,8 +1,8 @@
 # acts as an interface for the graph algorithmn and the clothing item data represented by the algorithmn
-import Modules.SmartyPants.Catagory as catagory
-import Modules.SmartyPants.Item as item
+import Modules.Closet.Catagory as catagory
+import Modules.Closet.Item as item
 
-class SmartyPants(object):
+class Closet(object):
 
     def __init__(self):
         self.__closet = {}
@@ -31,7 +31,24 @@ class SmartyPants(object):
             return self.__closet[CatagoryName]
         else:
             print("Catagory {} already exists.".format({CatagoryName}))
+
+    ## ---------------------------------------------------------- ##
+    ## function: getCatagory
+    ## purpose: used by interface to access individual catagories
+    ## parameter: catagoryName
+    ## returns: Catagory object with coorisponding catagoryName
+    ##          or None if no such catagory exists
+    ## ---------------------------------------------------------- ##
     
+    def getCatagory(self, catagoryName):
+        name = catagoryName.lower()
+
+        # confirm that catagory exists
+        if name not in self.__closet:
+            return None
+        else:
+            return self.__closet[name]
+
     def addItem(self, Catagory, newItem=None, VertexId=None, Name=None):
         
         if newItem is None:

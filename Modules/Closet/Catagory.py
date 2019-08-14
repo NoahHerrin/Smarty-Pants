@@ -1,4 +1,4 @@
-from Modules.SmartyPants.Item import Item
+from Modules.Closet.Item import Item
 
 class Catagory(object):
     def __init__(self, name):
@@ -11,6 +11,20 @@ class Catagory(object):
     def addItem(self, newItem):
         self.__listOfItems.append(newItem)
         self.__numItems += 1
+
+    ## -------------------------------------------------- ##
+    ## function: getItems
+    ## purpose: gets a list of all items in the catagory
+    ## returns: a list of item objects or None if
+    ##          catagory is empty
+    ## -------------------------------------------------- ##
+
+    def getItems(self):
+        if self.__numItems == 0:
+            return None
+        else:
+            return self.__listOfItems
+
 
     def display_items(self):
         for item in self.__listOfItems:

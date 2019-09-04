@@ -1,5 +1,15 @@
 from Modules.Closet.Item import Item
 
+
+## -------------------------------------------------------------------------- ##
+## object: Catagory
+## purpose: a datastructure to manipulate and organize multiple Item objects
+## methods: addItem, getItems, display_items, setNextCatagory, getNextCatagory
+##          getPreviousCatagory, setPreviousCatagory, printCatagory, getName
+## variables: __catagoryName, __listOfItems, __numItems, __nextCatagory,
+##            __previousCatagory
+## -------------------------------------------------------------------------- ##
+
 class Catagory(object):
     def __init__(self, name):
         self.__catagoryName = name
@@ -30,8 +40,8 @@ class Catagory(object):
         for item in self.__listOfItems:
             item.debugItem()
 
-    def setNextCatagory(self, next):
-        self.__nextCatagory = next
+    def setNextCatagory(self, nextCatagory):
+        self.__nextCatagory = nextCatagory 
 
     def getNextCatagory(self):
         return self.__nextCatagory 
@@ -40,9 +50,12 @@ class Catagory(object):
         self.__previousCatagory = previous
 
     def getPreviousCatagory(self):
-        return self.__nextCatagory
+        return self.__previousCatagory
+
     def getName(self):
         return self.__catagoryName
+
+
     ## ------------------------------------------------------------------------- ##
     ## function: printCatagory
     ## purpose: prints out each item stored within the catagory in a neat table
@@ -74,3 +87,7 @@ class Catagory(object):
 
             for item in self.__listOfItems:
                 print("\tItem: (name = {}, id = {})".format(item.getName(), item.getVertexId()))
+    
+    ## ----------------------------------------------------------- ##
+    ## function: formatCatagoryForSave
+    ## purpose: formats items in catagory to be saved

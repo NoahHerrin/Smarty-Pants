@@ -68,4 +68,39 @@ class Closet(object):
             self.__closet[catagory].printCatagory()
             print("")
             
-            
+    ## ----------------------------------------------------------------- ##
+    ## function: getItem
+    ## purpose: returns a reference to a disired item object
+    ## parameters: VertexID, ItemName
+    ## returns: Item object with either a matching VertexId or ItemName
+    ## notes: fairly inefficent as is, could be improved with a different
+    ##        searching algorithmn
+    ## ----------------------------------------------------------------- ##
+    
+    def getItem(self, vertexId=None, ItemName=None):
+        # search using vertexId
+        if vertexId is not None:
+            # iterate through each catagory
+            for catagory in self.__closet:
+                items = self.__closet[catagory].getItems()
+                # check that catagory contains items to prevent null pointer exception
+                if items is None: 
+                    continue
+                for item in items:
+                    if item.getVertexId() == vertexId:
+                        return item
+        # search using Item Name
+        elif ItemName is not None:
+            # iterate through each catagory
+            for catagory in self.__closet:
+                items = self.__closet[catagory].getItems()
+                # check that catagory contains items to prevent null pointer exception
+                if items is None: 
+                    continue
+                for item in items:
+                    if item.getName() == ItemName:
+                        return item
+        else:
+            raise Exception('Item does not exist')
+
+

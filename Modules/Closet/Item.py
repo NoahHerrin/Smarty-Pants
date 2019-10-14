@@ -12,7 +12,6 @@ class Item(object):
     
     def __init__(self, vertexId, Name):
         self.__vertexId = vertexId
-        self.__properties = {}
         self.__properties = {'name': Name}
 
 

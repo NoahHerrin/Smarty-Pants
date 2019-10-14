@@ -101,6 +101,49 @@ class Closet(object):
                     if item.getName() == ItemName:
                         return item
         else:
-            raise Exception('Item does not exist')
+            raise Exception('Item does not exist vertex={}, item name={}'.format(vertexId, ItemName))
+
+        
+
+        ## -------------------------------------------------------------------- ##
+        ## function: getClosetData
+        ## purpose: to prepare closet data to be writen to persistant storage
+        ## returns: a string using the following syntax
+        ##         catagory=[catagoryname]
+        ##         previous=[catagoryname], next=[catagoryname]
+        ##         [vertex id], property1=value1, property2=value2, property3=propery3
+        ##         [vertex id], property1=value1, property2=value2, property3=propery3
+        ##         catagory=[catagoryname] 
+        ##         previous=[catagoryname], next=[catagoryname]
+        ##         [vertex id], property1=value1, property2=value2, property3=propery3
+        ##         [vertex id], property1=value1, property2=value2, property3=propery3
+
+        def getClosetData(self):
+            # iterate through catagories
+            retVal = ""
+            for key in self.__closet:
+                # format catagoryname
+                retVal += "catagory={}\n".format(key)
+
+                # format previous
+                if self.__closet[key].getPreviousCatagory() is not None:
+                    retVal += "previous={},".format(self.__closet[key].getPreviousCatagory().getName())
+                else:
+                    retVal += "previous=None"
+                
+                # format next
+                if self.__closet[key].getNextCatagory() is not None:
+                    retVal += "next={}\n".format(self.__closet[key].getNextCatagory().getName())
+                else:
+                    retVal += "next=None\n"
+
+                # format items
+                for item in self.__closet[key].getItems():
+                    retVal += "vertex_id={}".format(item.getVertexId())
+                    for property in item.getProperties():
+                        retVal += ",{}={}".format(property, item.getProperties()[property])
+                    retVal += "\n" 
+            return retVal              
 
 
+                

@@ -84,7 +84,7 @@ def testOutfitGeneration():
     # print out outfit combination
     for item in outfit:
         item.debugItem()
-
+    return app
     # app.debugDS()
 
 
@@ -155,10 +155,10 @@ class Interface(object):
     ## ---------------------------------------------------------- ##
 
     def addItem(self, name, catagoryName):
-        # create vertex ✓
+        # create vertex 
         id = self.__graph.addVertex()
 
-        # create item ✓
+        # create item 
         self.__closet.addItem(Name = name, Catagory = catagoryName, VertexId = id)
 
         # fetch catagory
@@ -225,7 +225,7 @@ class Interface(object):
 
     def saveAppData(self, destination):
         destination.write(self.__graph.getGraphInfo())
-
+        print(self.__closet.getClosetData())
 
     ## --------------------------------------------------------------------- ##
     ## function: loadAppData
@@ -234,6 +234,8 @@ class Interface(object):
     ## --------------------------------------------------------------------- ##
 
     def loadAppData(self, graphSource, itemSource):
+
+        # first load graph
         fileContents = graphSource.read()
         data = fileContents.split('\n')
         if len(data) > 1:
@@ -249,6 +251,8 @@ class Interface(object):
         else:
             raise Exception('Unable to load app data')
 
+        # second load graph
+
          
     def debugDS(self):
         self.__closet.printCloset()
@@ -257,15 +261,8 @@ class Interface(object):
 
 if __name__ == "__main__":   
     print("Smarty Pants (beta)")
-    # testEdgeCreation()
-    # testOutfitGeneration()
-    
-    #testGraphSaving()
-    App = Interface()
-    file = open("sample.txt", "r")
-    App.loadAppData(file,None)
-    App.debugDS()
-    
+    app = testOutfitGeneration()
+    # testGraphSaving()    
 
 
 

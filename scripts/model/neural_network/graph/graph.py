@@ -6,19 +6,22 @@ class Graph(object):
         A datastructure used to represent verticies and their relations(edges)
         to other verticies
     """
+    # Complete Untested 
     def __init__(self):
         """Creates a new graph object"""
         self.next_id = 0 # used to assign a unique id to each node
         self.verticies = [] # automatically sorted in order id = index
         self.edges = [] # required operations add, search, delete (importance in that order), sort by origin int
     
+    # Complete Untested 
     def add_vertex(self):
         """creates new vertex and returns the id of the new vertex"""
 
         self.verticies.append(Vertex(next_id))
         self.next_id += 1
         return self.next_id - 1
-        
+    
+    # Complete Untested     
     def get_vertex(self, id):
         """Use binary search to find a vertex in the list and return it"""
         if not id > len(self.verticies) and len(self.verticies) is not 0:
@@ -31,6 +34,7 @@ class Graph(object):
         else:
             raise Exception("Attempted to access an invalid vertex with id = {}".format(id))
 
+    # Complete Untested 
     def get_index_of_vertex(self, id):
         """Use binary search to find a vertex. 
         Args:
@@ -53,7 +57,8 @@ class Graph(object):
             else:
                 i = i + int(i/2)
         return -1
-
+    
+    # Complete Untested 
     def remove_vertex(self, id):
         """Removes vertex with provided id from graph. All edges using the vertex will be deleted also"""
         index = self.get_index_of_vertex(id)
@@ -64,19 +69,26 @@ class Graph(object):
         self.verticies.pop(index)
 
 
-        
+    # Incomplete Untested     
     def add_edge_with_id(self, id, destination, weight):
         """ adds an edge using the int ids of the verticies you want to add"""
         
 
         pass
+    # Complete Untested 
     def add_edge_with_verticies(self, origin, destination, weight):
         """ returns the edge with verticies origin and destination """
         pass
-    def get_edge(self, origin: int, destination: int):
+
+    # Incomplete Untested
+    def get_edge(self, origin, destination):
         """use integer id's to find the appropriate edge"""
         pass
-    def remove_edge(self, origin: int, destination: int):
+    
+    # Incomplete Untested
+    def remove_edge(self, origin, destination):
         pass
-    def contains_edge(self, origin: int, destination: int):
+    
+    # Incomplete Untested
+    def contains_edge(self, origin, destination):
         pass

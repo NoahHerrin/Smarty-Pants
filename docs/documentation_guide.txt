@@ -4,15 +4,32 @@ By Noah Herrin
 The goal of this project is to use the NumPy Style python docstrings
 https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
 
-Purpose: 
-By using doc strings 
-example.
-"""this is a doc string"""
-then the code has the example to print out said comment like this
-> def get_max(a,b):
->    """returns the maximum value of a and b"""
->    return a if a > b else b
-> print(get_max.__doc__)
-returns the maximum value of a and b
+UnitTests
+---------
+use 'python -m unittest tests.test_vertex' to run tests
 
+General Strategy
+    Test allowed input Types
+    Test results
+    Test edge cases
 
+Note 
+
+    
+Error Types
+-----------
+
+TypeError
+    When type of a parameter is incorrect
+
+AttributeError
+    Issue when referencing or modifying an objects attributes
+
+IndexError
+    When index is out of bounds for a list
+
+SyntaxError
+    When a syntax error occurs when parsing
+
+NotImplementedError
+    raised when a feature is not implemented

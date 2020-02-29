@@ -1,0 +1,18 @@
+Intended Style Guide for Smarty Pants
+By Noah Herrin
+
+The goal of this project is to use the NumPy Style python docstrings
+https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
+
+Purpose: 
+By using doc strings 
+example.
+"""this is a doc string"""
+then the code has the example to print out said comment like this
+> def get_max(a,b):
+>    """returns the maximum value of a and b"""
+>    return a if a > b else b
+> print(get_max.__doc__)
+returns the maximum value of a and b
+
+

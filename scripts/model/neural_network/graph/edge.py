@@ -26,6 +26,17 @@ class Edge(object):
     """
     # Complete Untested 
     def __init__(self, origin, destination, weight):
+
+        if not isinstance(origin, Vertex):
+            raise TypeError("Invalid parameter, origin is of type {}, should be a Vertex".format(type(origin)))
+        
+        if not isinstance(destination, Vertex):
+            raise TypeError("Invalid parameter, destination is of type {}, should be Vertex".format(type(destination)))
+       
+        if not isinstance(weight, int) or isinstance(weight, bool):
+            raise TypeError("Invalid parameter, weight is of type, should be int".format(type(weight)))
+        if origin == destination:
+            raise ValueError("Invalid parameter, origin and destination of edge cannot be the same vertex.")
         self._origin = origin
         self._destination = destination
         self._weight = weight
@@ -68,7 +79,7 @@ class Edge(object):
         """
         if not isinstance(vertex, Vertex):
             raise TypeError("Invalid type of parameter vertex: {}".format(type(vertex)))
-        return vertex.id == self._origin or self.id == self._destination
+        return vertex.get_id() == self._origin.get_id() or vertex.get_id() == self._destination.get_id()
 
     # Complete Untested 
     def get_origin(self):  

@@ -33,3 +33,16 @@ SyntaxError
 
 NotImplementedError
     raised when a feature is not implemented
+
+ValueError
+    When the value is something you don't like
+
+
+Interesting Bug Sources
+-----------------------
+instanceof(bool, int)
+    Since a bool is simply a 1 or a 0, isinstance won't return false
+    this can be fixed easy by adding isinstance(variable, int) and 
+    not isinstance(variable, bool)
+
+

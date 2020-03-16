@@ -1,5 +1,5 @@
 from scripts.model.neural_network.graph.vertex import Vertex
-
+import math
 class Graph(object):
     """Graph datastructure
         
@@ -17,46 +17,54 @@ class Graph(object):
     def add_vertex(self):
         """creates new vertex and returns the id of the new vertex"""
 
-        self.verticies.append(Vertex(next_id))
+        self.verticies.append(Vertex(self.next_id))
         self.next_id += 1
         return self.next_id - 1
     
     # Complete Untested     
     def get_vertex(self, id):
         """Use binary search to find a vertex in the list and return it"""
-        if not id > len(self.verticies) and len(self.verticies) is not 0:
-            index = self.get_index_of_vertex(id)
-            if index is not -1:
-                return self.verticies[index]
-            else:
-                raise Exception("Invalid id: {}".format(id))
-
+        # test for invalid parameter types
+        if not isinstance(id, int) or isinstance(id, bool):
+            raise TypeError("Invalid parameter. id is type {}, should be int".format(type(id)))
+        
+        # test for out of bounds indecies
+        if id >= len(self.verticies) and id < 0:
+            raise ValueError("Invalid parameter, id must be greater than -1 and less than the number of verticies.")
+        elif len(self.verticies) == 0:
+            raise AttributeError("There are no verticies in the graph, try adding a vertex to the graph.")
         else:
-            raise Exception("Attempted to access an invalid vertex with id = {}".format(id))
+            if len(self.verticies) == 1:
+                if id == 0:
+                    return self.verticies[0]
+            else:    
+                index = self.get_index_of_vertex(id)
+                if index is not -1:
+                    return self.verticies[index]
+                else:
+                    raise ValueError("Invalid id: {}".format(id))
 
     # Complete Untested 
-    def get_index_of_vertex(self, id):
-        """Use binary search to find a vertex. 
-        Args:
-            id: int
-            the id of the vertex to be found
-        
-        Return:
-            int >= 0 if vertex exists
-            int = -1 if vertex does not exist"""
-
-        i = int(len(self.verticies) / 2)
-
-        while i < (len(self.verticies) - 1) and i > 0:
-
-            if self.verticies[i].get_id() == id:
-                return self.verticies[i]
-
-            elif self.verticies[i].get_id() < id:
-                i = int(i / 2)
+    def binary_vertex_search(self, l, r, target):
+        """Performs Binary Search on the list of verticies"""
+        if r >= l:
+            mid = l + int(round(((r - 1)/2), 0))
+            if self.verticies[mid].get_id() == target:
+                return self.verticies[mid]
+            elif self.verticies[mid].get_id() > target:
+                self.binary_vertex_search(l, mid - 1, target)
             else:
-                i = i + int(i/2)
-        return -1
+                self.binary_vertex_search(mid + 1, r, target)
+        else:
+            return -1
+
+    def get_index_of_vertex(self, index):
+        """"helper function for binary_vertex_search"""
+
+        if not isinstance(index, int) or isinstance(index, bool):
+            raise TypeError("Invalid Parameter, index is type {}, should be int.".format(type(index)))
+        
+        return self.binary_vertex_search(0, len(self.verticies) - 1, index)
     
     # Complete Untested 
     def remove_vertex(self, id):
@@ -64,9 +72,9 @@ class Graph(object):
         index = self.get_index_of_vertex(id)
         
         if index is -1:
-            raise Exception("Vertex with id {} does not exist.".format(id))
+            raise ValueError("Vertex with id {} does not exist.".format(id))
 
-        self.verticies.pop(index)
+        return self.verticies.pop(index)
 
 
     # Incomplete Untested     
@@ -91,4 +99,7 @@ class Graph(object):
     
     # Incomplete Untested
     def contains_edge(self, origin, destination):
+        pass
+
+    def contains_vertex(self, vertex):
         pass
